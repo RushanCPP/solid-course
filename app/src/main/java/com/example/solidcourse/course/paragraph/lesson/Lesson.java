@@ -5,11 +5,11 @@ import com.example.solidcourse.course.paragraph.lesson.task.Task;
 import java.util.List;
 
 public class Lesson {
-    protected String name;
-    protected List<Task> tasks;
-    protected int currentTask;
-    protected int score;
-    protected int maxScore;
+    private String name;
+    private List<Task> tasks;
+    private int currentTask;
+    private int score;
+    private int maxScore;
 
     public Lesson(String name, List<Task> tasks) {
         this.name = name;
@@ -24,8 +24,11 @@ public class Lesson {
     public Task next() {
         if (currentTask == tasks.size())
             return null;
-        ++currentTask;
-        return tasks.get(currentTask);
+        return tasks.get(currentTask++);
+    }
+
+    public boolean hasNext() {
+        return currentTask < tasks.size();
     }
 
     public boolean answer(String answer) {
@@ -61,5 +64,18 @@ public class Lesson {
 
     public void setCurrentTask(int currentTask) {
         this.currentTask = currentTask;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public int getMaxScore() {
+        return maxScore;
+    }
+
+    public void addTask(Task task) {
+        tasks.add(task);
+        maxScore += task.getMaxScore();
     }
 }

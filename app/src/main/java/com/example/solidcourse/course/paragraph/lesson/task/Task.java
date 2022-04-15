@@ -11,6 +11,7 @@ public abstract class Task {
         score = 0;
     }
 
+    protected Task() {};
 
     // геттеры и сеттеры класса
     public int getScore() {
@@ -39,4 +40,8 @@ public abstract class Task {
 
     // ответ на разные задачи происходит разными способами
     abstract public boolean answer(String answer);
+
+    public void restart() {
+        this.score = 0;
+    }
 }
